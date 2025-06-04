@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow</title>
+    <link rel="stylesheet" href="{% static 'css/priceInfo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        {% include 'common/navbar.html' %}
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-content">
+        <div class="section1">
+            <div class="left-text">
+                <h1>Rate Plan <br>Series</h1>
+            </div>
+            <div class="right-box">
+                <div class="rateplan-box">
+                    <h2><strong>Workflow-Basic</strong></h2>
+                    <p>주변에 임대난 곳에 무엇을 시작해야할 지 고민이신가요?<br>주변 상권과 위치 분석을 통한<br>매출 높고 인기 좋은 업종을 추천 받으세요!</p>
+                    <button class="main-button">선택</button>
+                </div>
+                <div class="rateplan-box">
+                    <h2><strong>Workflow-Standard</strong></h2>
+                    <p>주변에 임대난 곳에 무엇을 시작해야할 지 고민이신가요?<br>주변 상권과 위치 분석을 통한<br>매출 높고 인기 좋은 업종을 추천 받으세요!</p>
+                    <button class="main-button">선택</button>
+                </div>
+                <div class="rateplan-box">
+                    <h2><strong>Workflow-Pro</strong></h2>
+                    <p>주변에 임대난 곳에 무엇을 시작해야할 지 고민이신가요?<br>주변 상권과 위치 분석을 통한<br>매출 높고 인기 좋은 업종을 추천 받으세요!</p>
+                    <button class="main-button">선택</button>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="section2">
+            <h1>wow!</h1>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        {% include 'common/footer.html' %}
+    </footer>
+
+</body>
+</html>

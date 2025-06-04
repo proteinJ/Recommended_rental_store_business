@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'home/index.html', {})
+    return render(request, 'index.html')  
 
 def priceInfo(request):
-    return render(request, 'home/priceInfo.html')
+    return render(request, 'priceInfo.html')
 
 def introduction(request):
-    return render(request, 'home/introduction.html')
+    return render(request, 'introduction.html')
