@@ -15,20 +15,22 @@ body {
 
 body {
     background-color: white;
+    
 }
 
 
+.wrapper {
+    min-height: 100vh; /* 화면 높이를 채우도록 설정 */
+}
+
 /* Main */
 .main-content {
-    min-height: 100vh; /* 뷰포트 높이만큼 */
-    display: flex;
-    justify-content: center;    
-    flex-direction: column;
+    flex: 1; /* 남은 공간을 채우도록 설정 */
+    padding: 20px; /* 내부 여백 */
 }
 
 .section1 {
     background-color: white;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,4 +132,28 @@ body {
     color: rgb(70, 202, 121);
     font-weight: bold;
     font-size: 1rem;
+}
+
+.login-link {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.line {
+    width: 100%; /* 선의 너비 */
+    height: 1px; /* 선의 두께 */
+    background-color: #ccc; /* 선의 색상 */
+    margin: 20px 0; /* 위아래 간격 */
+}
+
+.highlight-star {
+    color: rgb(255, 32, 32);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column; /* 세로 방향 레이아웃 */
 }
