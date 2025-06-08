@@ -1,14 +1,79 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from .models import UserProfile
 
+# 로그인 처리 로직
 def login_view(request):
-    # 로그인 처리 로직
-    return render(request, 'accounts/login.html')
+    if request.method == 'POST':
+        userid = request.POST.get('userid')
+        password = request.POST.get('password')
+
+        
+
+        user = authenticate(request, username=userid, password=password)
+        if user is not None: # 로그인 성공
+            login(request, user)
+            print(f"\n✅ [로그인 성공] -----------------------------")
+            print(f"  ▶ 아이디: {user.username}")
+            print(f"  ▶ DB User ID: {user.id}")
+            print(f"  ▶ 이름: {user.first_name}")
+            print(f"---------------------------------------------\n")
+            return redirect('home:index')
+        else: # 로그인 실패
+            print("\n❌ [로그인 실패] 아이디 또는 비밀번호가 올바르지 않습니다.\n")
+            error_msg = '아이디 또는 비밀번호가 올바르지 않습니다.'
+            return render(request, 'accounts/login.html', {'error': error_msg })
+    else: # GET 요청 - 로그인 폼 보여주기(처음 화면 렌더링)
+        return render(request, 'accounts/login.html')
 
 def signup_view(request):
+    error_field = None
+
+    if request.method == 'POST':
+        
+        username = request.POST.get('username')
+        userid = request.POST.get('userid')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm-password')
+        userbirth_year = request.POST.get('userbirth-year')
+        userbirth_month = request.POST.get('userbirth-month')
+        userbirth_day = request.POST.get('userbirth-day')
+        userphone = request.POST.get('phone')
+
+        if password != confirm_password:
+            error_field = 'confirm-password'
+            print("\n❌ [회원가입 실패] 비밀번호가 일치하지 않습니다.\n")
+        elif User.objects.filter(username=userid).exists():
+            error_field = 'userid'
+            print("\n❌ [회원가입 실패] userid가 존재하지 않습니다.\n")
+        else:
+            # 회원 생성
+            user = User.objects.create_user(
+                username=userid,
+                password=password,
+                first_name=username
+            )
+            UserProfile.objects.create(
+                user=user,
+                birth_year=userbirth_year,
+                birth_month=userbirth_month,
+                birth_day=userbirth_day,
+                phone=userphone
+            )
+            print(f"\n✅ [회원가입 성공] -----------------------------")
+            print(f"  ▶ 아이디: {user.username}")
+            print(f"  ▶ DB User ID: {user.id}")
+            print(f"  ▶ 이름: {user.first_name}")
+            print(f"  ▶ 생년월일: {userbirth_year}-{userbirth_month}-{userbirth_day}")
+            print(f"  ▶ 전화번호: {userphone}")
+            print(f"-----------------------------------------------\n")
+            return redirect('accounts:login')
+        
     # 회원가입 처리 로직
-    return render(request, 'accounts/signup.html')
+    return render(request, 'accounts/signup.html', {
+        'error_field' : error_field,
+    })
 
 def logout_view(request):
     logout(request)  # 세션 로그아웃 처리

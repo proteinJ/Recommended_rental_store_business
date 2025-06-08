@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    z-index: 10;
 }
 /* 
 body {
@@ -14,6 +15,7 @@ body {
 } */
 
 body {
+    z-index: -1;
     background-color: white;
 }
 
@@ -23,50 +25,85 @@ body {
     
 }
 
+.background-image1,
+.background-image2 {
+    position: absolute;      /* 또는 absolute, fixed는 스크롤해도 고정 */
+    z-index: 0;          /* 맨 뒤로 보냄 */
+    pointer-events: none; /* 클릭 등 이벤트 무시 */
+    user-select: none;    /* 드래그 방지 */
+}
+
+/* 원하는 위치와 크기 지정 */
+.background-image1 {
+    top: 200px;
+    left: 430px;
+    width: 70vw;
+    height: auto;
+}
+
+.background-image2 {
+    top: 500px;
+    left: -50px;
+    width: 40vw;
+    height: auto;
+}
+
 .section1 {
-    background: url('../images/background-image.jpg') no-repeat center center / cover;
     background-color: white;
     height: 100vh;
     flex: 1;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 2rem 4rem;
 }
 
+.left-text {
+    margin-top: 100px;
+}
 
 .left-text h1 {
     font-size: 4rem;
     line-height: 1.2;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
-.right-box {
-    background-color: white;
-    color: black;
-    padding: 2rem;
-    border-radius: 20px;
-    width: 30%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+.menu {
+    margin-top: 400px;
 }
 
-.right-box h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.menu ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.right-box p {
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-    font-size: 0.95rem;
+.menu-item, .menu-item * {
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
-.main-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 20px;
-    cursor: pointer;
+.menu-item-content {
+    margin-bottom: 25px;
 }
 
+.menu-item {
+    background: rgba(247, 247, 247, 0.95);
+    width: 260px;
+    height: 380px;
+    padding: 0 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 195, 30, 0.979);
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-15px);    
+    box-shadow: 10px 10px 3px 0 rgba(0, 0, 0, 0.35),
+    0 4px 16px 0 rgba(0,0,0,0.12);
+}

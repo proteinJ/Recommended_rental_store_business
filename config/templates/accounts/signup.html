@@ -28,70 +28,76 @@
                 <div class="top-text">
                     <h1>회원가입</h1>
                 </div>
-                <div class="right-box">
-                    <div class="login-box">
-                        <label class="input_text">아이디 <span class="highlight-star">*</span></label>
-                        <input class="input-box" type="text" id="id" placeholder="아이디를 입력하세요">
-                    </div>
-                    <div class="login-box">
-                        <label class="input_text">비밀번호 <span class="highlight-star">*</span></label>
-                        <input class="input-box" type="password" id="password" placeholder="비밀번호를 입력하세요">
-                        <input class="input-box" type="password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요">
-                    </div>
-                    <div class="login-box">
-                        <label class="input_text">이름 <span class="highlight-star">*</span></label>
-                        <input class="input-box" type="text" id="username" placeholder="이름을 입력하세요">
-                    </div>
-                    <div class="login-box">
-                        <label class="input_text">생년월일 <span class="highlight-star">*</span></label>
-                        <input class="input-box" type="text" id="userbirth-year" placeholder="생일연도(4자)">
-                        <input class="input-box" type="text" id="userbirth-month" placeholder="월">
-                        <input class="input-box" type="text" id="userbirth-day" placeholder="일">
-                    </div>
-                    <div class="login-box">
-                        <label class="input_text">휴대전화 번호 <span class="highlight-star">*</span></label>
-                        <input class="input-box" type="text" id="phone" placeholder="휴대전화 번호">
-                    </div>
-                    
-                    <div class="terms-of-use">
-                        <section class="terms">
-                            <div class="privacy-box">
-                                <input class="checkbox" type="checkbox" id="terms-checkbox">
-                                <label class="custom-checkbox-label terms-checkbox" for="terms-checkbox">아래 내용에 모두 동의합니다.</label>         
-                            </div>                 
-                        </section>
+
+                <form method="POST" action="{% url 'accounts:signup' %}">
+                    {% csrf_token %}
+                    <div class="right-box">
+                        <div class="login-box">
+                            <label class="input_text">아이디 <span class="highlight-star">*</span></label>
+                            <input class="input-box" type="text" name="userid" id="userid" placeholder="아이디를 입력하세요">
+                        </div>
+                        <div class="login-box">
+                            <label class="input_text">비밀번호 <span class="highlight-star">*</span></label>
+                            <input class="input-box" type="password" name="password" id="password" placeholder="비밀번호를 입력하세요">
+                            <input class="input-box" type="password" name="confirm-password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요">                    
+                        </div>
+                        <div class="login-box">
+                            <label class="input_text">이름 <span class="highlight-star">*</span></label>
+                            <input class="input-box" type="text" name="username" id="username" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="login-box">
+                            <label class="input_text">생년월일 <span class="highlight-star">*</span></label>
+                            <input class="input-box" type="text" name="userbirth-year" id="userbirth-year" placeholder="생일연도(4자)">
+                            <input class="input-box" type="text" name="userbirth-month" id="userbirth-month" placeholder="월">
+                            <input class="input-box" type="text" name="userbirth-day" id="userbirth-day" placeholder="일">
+                        </div>
+                        <div class="login-box">
+                            <label class="input_text">휴대전화 번호 <span class="highlight-star">*</span></label>
+                            <input class="input-box" type="text" name="phone" id="phone" placeholder="휴대전화 번호">
+                        </div>
                         
-                        <div class="line"></div>
+                        <div class="terms-of-use">
+                            <section class="terms">
+                                <div class="privacy-box">
+                                    <input class="checkbox" type="checkbox" id="terms-checkbox">
+                                    <label class="custom-checkbox-label terms-checkbox" for="terms-checkbox">아래 내용에 모두 동의합니다.</label>         
+                                </div>                 
+                            </section>
+                            
+                            <div class="line"></div>
 
-                        <section class="privacy">
-                            <div class="privacy-box">
-                                <input class="checkbox" type="checkbox" id="privacy-checkbox-1">
-                                <label class="custom-checkbox-label" for="privacy-checkbox-1">[필수] 이용약관 동의 <span class="highlight-star">*</span></label>                                
-                                <a href="#" class="open-popup" onclick="openModal('{% url 'terms_usage' %}')">약관보기</a>
+                            <section class="privacy">
+                                <div class="privacy-box">
+                                    <input class="checkbox" type="checkbox" id="privacy-checkbox-1">
+                                    <label class="custom-checkbox-label" for="privacy-checkbox-1">[필수] 이용약관 동의 <span class="highlight-star">*</span></label>                                
+                                    <a href="#" class="open-popup" onclick="openModal('{% url 'accounts:terms_usage' %}')">약관보기</a>
+                                </div>
+                                <div class="privacy-box">                    
+                                    <input class="checkbox" type="checkbox" id="privacy-checkbox-2">
+                                    <label class="custom-checkbox-label" for="privacy-checkbox-2">[필수] 개인정보 수집 및 이용 동의 <span class="highlight-star">*</span></label>                                
+                                    <a href="#" class="open-popup" onclick="openModal('{% url 'accounts:terms_privacy' %}')">약관보기</a>
+                                </div>
+                                <div class="privacy-box">                            
+                                    <input class="checkbox" type="checkbox" id="privacy-checkbox-3">
+                                    <label class="custom-checkbox-label" for="privacy-checkbox-3">[필수] 만 14세 이상입니다. <span class="highlight-star">*</span></label>                                
+                                    <a href="#" class="open-popup" onclick="openModal('{% url 'accounts:terms_age' %}')">약관보기</a>
+                                </div>
+                                <div class="privacy-box">                            
+                                    <input class="checkbox" type="checkbox" id="privacy-checkbox-4">
+                                    <label class="custom-checkbox-label" name="agree_marketing" for="privacy-checkbox-4">[선택] 광고성 정보 수신 동의</label>                                
+                                    <a href="#" class="open-popup" onclick="openModal('{% url 'accounts:terms_advertising' %}')">약관보기</a>
+                                </div>
+                            </section>    
+                        </div>
+
+                        
+                            <div class="login-button-box">
+                                <button class="page-login-button" id="login-button">가입하기</button>
                             </div>
-                            <div class="privacy-box">                    
-                                <input class="checkbox" type="checkbox" id="privacy-checkbox-2">
-                                <label class="custom-checkbox-label" for="privacy-checkbox-2">[필수] 개인정보 수집 및 이용 동의 <span class="highlight-star">*</span></label>                                
-                                <a href="#" class="open-popup" onclick="openModal('{% url 'terms_privacy' %}')">약관보기</a>
-                            </div>
-                            <div class="privacy-box">                            
-                                <input class="checkbox" type="checkbox" id="privacy-checkbox-3">
-                                <label class="custom-checkbox-label" for="privacy-checkbox-3">[필수] 만 14세 이상입니다. <span class="highlight-star">*</span></label>                                
-                                <a href="#" class="open-popup" onclick="openModal('{% url 'terms_age' %}')">약관보기</a>
-                            </div>
-                            <div class="privacy-box">                            
-                                <input class="checkbox" type="checkbox" id="privacy-checkbox-4">
-                                <label class="custom-checkbox-label" for="privacy-checkbox-4">[선택] 광고성 정보 수신 동의</label>                                
-                                <a href="#" class="open-popup" onclick="openModal('{% url 'terms_advertising' %}')">약관보기</a>
-                            </div>
-                        </section>    
                     </div>
+                </form>
 
-                    <div class="login-button-box">
-                        <button class="page-login-button" id="login-button">가입하기</button>
-                    </div>
-
-                    <a href="{% url 'login' %}" class="login-link">이미 회원이신가요? 로그인하기</a>
+                    <a href="{% url 'accounts:login' %}" class="login-link">이미 회원이신가요? 로그인하기</a>
                 </div>
             </div>
         </main>

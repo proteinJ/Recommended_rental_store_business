@@ -4,4 +4,11 @@
             <a href="#">서비스 후기</a>
             <a href="/priceInfo">요금제</a>
         </nav>
-        <button class="login-button" id="login-button">로그인</button>
+        {% if user.is_authenticated %}
+            <div class="name-login-signup-btn-container">
+                <a href="#" class="mypage-name"> <span class="highlight-text">{{ user.first_name }}</span> 님</a>
+                <a href="{% url 'accounts:logout' %}" class="login-button">로그아웃</a>
+            </div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}" class="login-button">로그인</a>
+        {% endif %}

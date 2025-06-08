@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow</title>
+    <link rel="stylesheet" href="{% static 'css/recommendService.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId={{ naver_map_api_key }}"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        {% include 'common/navbar.html' %}
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-content">
+        <div class="section1">
+            <div class="naverMap" id="map"></div>
+                <script>
+                    var map = new naver.maps.Map('map', {
+                        center: new naver.maps.LatLng(35.1796, 129.0756), // 부산 좌표
+                        zoom: 10
+                    });
+                </script>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        {% include 'common/footer.html' %}
+    </footer>
+
+    <script src="{%static 'js/button_logic.js' %}"></script>
+</body>
+</html>

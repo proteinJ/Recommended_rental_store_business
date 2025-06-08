@@ -17,18 +17,38 @@
 
     <!-- Main Section -->
     <main class="main-content">
+        <img class="background-image1" src="{% static 'images/1111.png' %}" alt="배경 이미지1">
+        <img class="background-image2" src="{% static 'images/2222.png' %}" alt="배경 이미지2">
         <div class="section1">
             <div class="left-text">
                 <h1>Let's work<br>together</h1>
+                <h2><span class=highlight-text>WorkFlow</span> 와 함께하세요 !</h2>
             </div>
-            <div class="right-box">
-                <h2><strong>workflow</strong>의 도움을 받으세요</h2>
-                <p>주변에 임대난 곳에 무엇을 시작해야할 지 고민이신가요?<br>주변 상권과 위치 분석을 통한<br>매출 높고 인기 좋은 업종을 추천 받으세요!</p>
-                <button class="main-button">서비스 이용하기</button>
+            <div class="menu">
+                <ul>
+                    <a class="menu-item" href="{% url 'introduction' %}">
+                        <div class="menu-item-content">
+                            <img src="{% static 'images/img1.png' %}" alt="추천 업종 이미지">
+                            <h1>소개</h1>
+                            <h3>서비스를 이용하기 전 알아봅시다.</h3>
+                        </div>
+                    </a>
+                    <a class="menu-item" href="{% url 'recommendService:recommendService' %}">
+                        <div class="menu-item-content">
+                            <img src="{% static 'images/img2.png' %}" alt="추천 업종 이미지" style="width: 70%; height: 60%;">
+                            <h1>시장 조사</h1>
+                            <h3>사장님이 되기 전 주변을 알아봅시다.</h3>
+                        </div>
+                    </a>
+                    <a class="menu-item" href="{% url 'recommendService:recommendService' %}">
+                        <div class="menu-item-content">
+                            <img src="{% static 'images/img3.png' %}" alt="추천 업종 이미지">
+                            <h1>추천 업종</h1>
+                            <h3>부산에서 뜨는 업종을 추천해드립니다.</h3>
+                        </div>
+                    </a>
+                </ul>
             </div>
-        </div>
-        <div class="section2">
-            <h1>wow!</h1>
         </div>
     </main>
 
