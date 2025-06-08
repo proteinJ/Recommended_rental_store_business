@@ -1,3 +1,4 @@
+{% load static %}
 <div class="logo"><a class ="logo-href" href="/">workflow</a></div>
         <nav class="nav-links">
             <a href="/introduction">소개</a>
@@ -6,9 +7,12 @@
         </nav>
         {% if user.is_authenticated %}
             <div class="name-login-signup-btn-container">
-                <a href="#" class="mypage-name"> <span class="highlight-text">{{ user.first_name }}</span> 님</a>
-                <a href="{% url 'accounts:logout' %}" class="login-button">로그아웃</a>
+                <a href="#" class="mypage-name"> <img src="{% static 'images/userProfile.png' %}" class="userProfile-icon" alt="사용자정보"> <span class="highlight-text">{{ user.first_name }}</span> 님</a>
+                <a href="{% url 'accounts:logout' %}" class="login-signup-button">로그아웃</a>
             </div>
         {% else %}
-            <a href="{% url 'accounts:login' %}" class="login-button">로그인</a>
+            <div class="name-login-signup-btn-container">
+                <a href="{% url 'accounts:login' %}" class="login-signup-button">로그인</a>
+                <a href="{% url 'accounts:signup' %}" class="login-signup-button">회원가입</a>
+            </div>
         {% endif %}

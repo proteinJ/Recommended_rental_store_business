@@ -20,13 +20,15 @@ body {
 
 /* Main */
 .main-content {
-    
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px + 100px); /* 80px는 footer, 400px는 menu의 margin-top */
 }
 
 .section1 {
-    background: url('../images/background-image.jpg') no-repeat center center / cover;
+    /* background: url('../images/background-image.jpg') no-repeat center center / cover; */
     background-color: white;
-    height: 100vh;
+    /* height: 100vh; */
     flex: 1;
     display: flex;
     align-items: center;
@@ -38,15 +40,18 @@ body {
 .left-text h1 {
     font-size: 4rem;
     line-height: 1.2;
-    color: white;
-    margin-bottom: 50px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 30px;
+}
+
+.left-text span {
+    color: #4400ff;
 }
 
 .right-box {
     background-color: rgba(255, 255, 255, 0);
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 2rem;
     gap: 20px;
 }
@@ -54,12 +59,6 @@ body {
 .right-box h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-}
-
-.right-box p {
-    margin-bottom: 2.5rem;
-    line-height: 1.5;
-    font-size: 0.95rem;
 }
 
 .main-button {
@@ -85,11 +84,49 @@ body {
 
 .rateplan-box {
     background-color: rgba(245, 245, 245, 0.815);
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
     justify-items: center;
     width: 40%;
-    height: 100%;
     position: relative;
+    border-radius: 20px;
+    border: 0.5px solid rgba(197, 197, 197, 0.822);
 }
 
+.box-content {
+    margin-bottom: 70px;
+}
 
+.rateplan-box li {
+    list-style: none;
+}
+.rateplan-box span {
+    font-size: 20px;
+    font-weight: 600;
+}
+.rateplan-box strong {
+    font-weight: 700;
+}
+
+.price {
+    display: flex;
+    gap: 7px;
+}
+
+.price h2 {
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.krw-month {
+    font-size: 14px;
+    font-weight: 400;
+    color: #575757;
+    margin-top: 22px;
+}
+
+.dollar {
+    font-size: 30px;
+    font-weight: 400;
+}

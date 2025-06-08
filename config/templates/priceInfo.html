@@ -19,38 +19,86 @@
     <main class="main-content">
         <div class="section1">
             <div class="left-text">
-                <h1>Rate Plan <br>Series</h1>
+                <h1>Rate Plan <br>Series<span>.</span></h1>
             </div>
             <div class="right-box">
                 <div class="rateplan-box">
-                    <h2><strong>Workflow-Basic</strong></h2>
-                    <p>HD(720p)로 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 1개 디바이스에 저장 가능.KT 청구서에 통합.
-                        HD(720p)로 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 1개 디바이스에 저장 가능.KT 청구서에 통합.
-                        HD(720p)로 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 1개 디바이스에 저장 가능.KT 청구서에 통합.</p>
-                    <button class="main-button">선택</button>
+                    <div class="box-content">
+                        <h1><strong>Free</strong></h1>
+                        <div class="price">
+                            <p class="dollar">$</p>                        
+                            <h2>0</h2>
+                            <p class="krw-month">USD/<br>월</p>
+                        </div>
+                        {% if user.plan_type == "Free" %}
+                            <button class="main-button">나의 현재 플랜</button>
+                        {% endif %}
+                        <button class="main-button">Free 이용하기</button>
+                        <ul>
+                            <li><span> 검색 횟수 제한: </span>하루 최대 5회 업종 추천 검색</li>
+                            <li><span> 추천 업종 제한: </span>일부 업종군(예: 인기 업종, 프랜차이즈 등)만 추천</li>
+                            <li><span> 상권 분석: </span>간단한 상권 정보만 제공 (유동인구, 기본 통계)</li>
+                            <li><span> 지도 기능: </span>기본 지도만 제공, 상세 위치 분석 불가</li>
+                            <li><span> 광고 있음: </span>서비스 내 배너/팝업 광고 노출</li>
+                            <li><span> 고객 지원: </span>이메일 문의만 가능, 답변 지연 가능</li>
+                            <li><span> 저장 기능: </span>최근 3개 검색 결과만 저장 가능</li>
+                            <li><span> 데이터 다운로드: </span>불가</li>
+                        </ul>                    
+                    </div>
                 </div>
                 <div class="rateplan-box">
-                    <h2><strong>Workflow-Standard</strong></h2>
-                    <p>풀 HD(1080p)로 매우 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 2개 디바이스에 저장 가능.월 4,000원의 추가 요금이 KT 청구서에 통합. *
-                        풀 HD(1080p)로 매우 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 2개 디바이스에 저장 가능.월 4,000원의 추가 요금이 KT 청구서에 통합. *
-                        풀 HD(1080p)로 매우 좋은 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 2개 디바이스에 저장 가능.월 4,000원의 추가 요금이 KT 청구서에 통합. *
-                    </p>
-                    <button class="main-button">선택</button>
+                    <div class="box-content">
+                        <h1><strong>Plus</strong></h1>
+                        <div class="price">
+                            <p class="dollar">$</p>
+                            <h2>3</h2>
+                            <p class="krw-month">USD/<br>월</p>
+                        </div>
+                        {% if user.plan_type == "Plus" %}
+                            <button class="main-button">나의 현재 플랜</button>
+                        {% endif %}
+                        <button class="main-button">Plus 이용하기</button>
+                        <ul>
+                            <li><span> 검색 횟수: </span>하루 최대 20회 업종 추천 검색</li>
+                            <li><span> 추천 업종: </span>모든 업종군 추천 가능</li>
+                            <li><span> 상권 분석: </span>상세 상권 정보 제공 (연령/성별/시간대별 유동인구, 경쟁 점포 수 등)</li>
+                            <li><span> 지도 기능: </span>상세 지도, 반경 분석, 경쟁 점포 위치 표시</li>
+                            <li><span> 광고 없음 </span></li>
+                            <li><span> 고객 지원: </span>이메일 및 1:1 채팅 상담 지원</li>
+                            <li><span> 저장 기능: </span>최대 20개 검색 결과 저장 가능</li>
+                            <li><span> 데이터 다운로드: </span>엑셀/CSV로 결과 다운로드 가능</li>
+                            <li><span> 맞춤 알림: </span>관심 지역 신규 상권 변화 알림</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="rateplan-box">
-                    <h2><strong>Workflow-Pro</strong></h2>
-                    <p>UHD(4K) 및 HDR로 가장 좋은 화질 제공. 공간 음향 지원. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 6개 디바이스에 저장 가능.월 7,500원의 추가 요금이 KT 청구서에 통합. *
-                        UHD(4K) 및 HDR로 가장 좋은 화질 제공. 공간 음향 지원. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 6개 디바이스에 저장 가능.월 7,500원의 추가 요금이 KT 청구서에 통합. *
-                        UHD(4K) 및 HDR로 가장 좋은 화질 제공. 공간 음향 지원. 스마트폰, 태블릿, 컴퓨터 또는 TV로 광고 없이 시청. 6개 디바이스에 저장 가능.월 7,500원의 추가 요금이 KT 청구서에 통합. *
-                    </p>
-                    <button class="main-button">선택</button>
-                </div>
-                
-                
+                    <div class="box-content">
+                        <h1><strong>Pro</strong></h1>
+                        <div class="price">
+                            <p class="dollar">$</p>
+                            <h2>5</h2>
+                            <p class="krw-month">USD/<br>월</p>
+                        </div>
+                        {% if user.plan_type == "Pro" %}
+                            <button class="main-button">나의 현재 플랜</button>
+                        {% endif %}
+                        <button class="main-button">Plus 이용하기</button>
+                        <ul>
+                            <li><span> 검색 횟수: </span>무제한 업종 추천 검색</li>
+                            <li><span> 추천 업종: </span>모든 업종군 + 프리미엄 업종(트렌드, 신사업 등) 추천</li>
+                            <li><span> 상권 분석: </span>고급 상권 분석(매출 추정, 임대료 시뮬레이션, 미래 성장성 예측)</li>
+                            <li><span> 지도 기능: </span>고급 지도(3D, 히트맵, 유동인구 흐름 애니메이션 등)</li>
+                            <li><span> 경쟁 분석: </span>경쟁 점포 상세 분석, 매출 추정 비교</li>
+                            <li><span> 고객 지원: </span>전화상담, 우선 지원</li>
+                            <li><span> 저장 기능: </span>무제한 검색 결과 저장</li>
+                            <li><span> 데이터 다운로드: </span>PDF, 엑셀, 프리젠테이션용 리포트 다운로드</li>
+                            <li><span> API 제공: </span>외부 시스템 연동용 API 제공</li>
+                            <li><span> 맞춤 컨설팅: </span>전문가 1:1 컨설팅(월 1회 무료)</li>
+                            <li><span> 알림: </span>실시간 상권 변화/경쟁점 오픈 알림</li>
+                        </ul>
+                    </div>
+                </div>       
             </div>
-        </div>
-        <div class="section2">
-            <h1>wow!</h1>
         </div>
     </main>
 
