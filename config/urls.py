@@ -9,4 +9,5 @@ urlpatterns = [
     path('recommendService/', include('recommendService.urls', namespace='recommendService')),
     path('introduction/', TemplateView.as_view(template_name='introduction.html'), name='introduction'),
     path('priceInfo/', TemplateView.as_view(template_name='priceInfo.html'), name='priceInfo'),
+    path('review/', include('review.urls', namespace='review')),
 ]

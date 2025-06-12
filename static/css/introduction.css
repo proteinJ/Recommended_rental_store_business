@@ -25,7 +25,6 @@ body {
 
 /* Main */
 .main-content {
-    min-height: 100vh; /* 뷰포트 높이만큼 */
     display: flex;
     justify-content: center;    
     flex-direction: column;
@@ -59,7 +58,6 @@ body {
     grid-template-columns: repeat(4, 1fr);  /* 가로 4칸 */
     grid-template-rows: repeat(2, 1fr);     /* 세로 2줄 */
     width: 100%;
-    margin-top: 35%;
 }
 
 .grid-item {

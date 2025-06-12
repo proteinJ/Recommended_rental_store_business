@@ -20,12 +20,7 @@
     <main class="main-content">
         <div class="section1">
             <div class="naverMap" id="map"></div>
-                <script>
-                    var map = new naver.maps.Map('map', {
-                        center: new naver.maps.LatLng(35.1796, 129.0756), // 부산 좌표
-                        zoom: 10
-                    });
-                </script>
+                <script src="{% static 'js/map_control.js' %}"></script>
         </div>
     </main>
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>서비스 후기 목록</h2>
+<a href="{% url 'review:review_create' %}">후기 작성하기</a>
+<ul>
+  {% for review in reviews %}
+    <li>
+      <strong>{{ review.username }}</strong> ({{ review.rating }}점)<br>
+      {{ review.content }}<br>
+      <small>{{ review.created_at }}</small>
+    </li>
+  {% empty %}
+    <li>아직 후기가 없습니다.</li>
+  {% endfor %}
+</ul>
+</body>
+</html>

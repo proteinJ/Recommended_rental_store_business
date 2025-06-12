@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
-    /* z-index: 10; */
+    z-index: 10; 
 }
 
 body {
@@ -28,17 +28,19 @@ body {
 
 /* 원하는 위치와 크기 지정 */
 .background-image1 {
-    top: 200px;
+    top: 120px;
     left: 430px;
     width: 70vw;
     height: auto;
+    z-index: 0;
 }
 
 .background-image2 {
-    top: 500px;
+    top: 450px;
     left: -50px;
     width: 40vw;
     height: auto;
+    z-index: 2;
 }
 
 .section1 {
@@ -55,9 +57,12 @@ body {
 }
 
 .left-text h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     line-height: 1.2;
     color: rgb(0, 0, 0);
+}
+.left-text h2 {
+    font-size: 2rem;
 }
 
 .menu {

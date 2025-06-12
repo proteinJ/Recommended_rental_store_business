@@ -1,0 +1,6 @@
+<h2>후기 작성</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">등록</button>
+</form>
