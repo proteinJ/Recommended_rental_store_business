@@ -8,7 +8,8 @@
     <title>Workflow</title>
     <link rel="stylesheet" href="{% static 'css/recommendService.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
-    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId={{ naver_map_api_key }}"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_map_api_key }}&libraries=services"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -19,8 +20,13 @@
     <!-- Main Section -->
     <main class="main-content">
         <div class="section1">
-            <div class="naverMap" id="map"></div>
-                <script src="{% static 'js/map_control.js' %}"></script>
+            <div>
+                <input type="text" id="addressInput" placeholder="도로명 주소를 입력하세요 (예: 부산 해운대구 센텀중앙로 90)">
+                <button id="searchButton">주소 검색</button>
+            </div>
+            <div id="resultInfo"></div>
+            <div id="map"></div>
+            
         </div>
     </main>
 
@@ -28,7 +34,9 @@
     <footer class="footer">
         {% include 'common/footer.html' %}
     </footer>
-
+    
+    <script src="{%static 'js/map_control.js' %}"></script>
     <script src="{%static 'js/button_logic.js' %}"></script>
+    
 </body>
 </html>

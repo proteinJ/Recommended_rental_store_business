@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.conf import settings
+
+
 
 def recommendService(request):
+    from django.conf import settings
     return render(request, 'recommendService/recommendService.html', {
-        'naver_map_api_key' : settings.NAVER_MAP_API_KEY,
+        'kakao_map_api_key' : settings.KAKAO_MAP_API_KEY,
     })
