@@ -13,6 +13,17 @@ body {
     flex-direction: column;
 } */
 
+ul{
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+}
+
+strong{
+    font-size: 1.6rem;
+}
+
 body {
     background-color: white;
 }
@@ -20,16 +31,22 @@ body {
 
 /* Main */
 .main-content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px + 100px); /* 80px는 footer, 400px는 menu의 margin-top */
 }
 
 .section1 {
-    background: url('../images/background-image.jpg') no-repeat center center / cover;
+    /* background: url('../images/background-image.jpg') no-repeat center center / cover; */
     background-color: white;
+    /* height: 100vh; */
     flex: 1;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 2rem 4rem;
+    width: 80rem;
+    justify-self: center;
 }
 
 
@@ -41,7 +58,7 @@ body {
 }
 
 .left-text span {
-    color: #0085ff
+    color: #4400ff;
 }
 
 .right-box {
@@ -57,25 +74,33 @@ body {
     margin-bottom: 1rem;
 }
 
+
+
 .main-button {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
     background-color: #ffffff;
     color: rgb(22, 22, 22);
-    width: 70%;
-    padding: 0.7rem 1.5rem;
+    width: 100%;
+    padding: 0.4rem 1.5rem;
     border: 1px solid rgb(187, 187, 187);
     border-radius: 30px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    margin: 1rem;
 }
 
 .main-button:hover {
-    background-color: #f0f0f0;
-    border-color: #ccc;
+    background-color: rgba(86, 153, 255, 0.836);
+    border-color: #484af0a1;
+}
+
+.rateplan-title{
+    height: 2.8rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .rateplan-box {
@@ -91,15 +116,19 @@ body {
 }
 
 .box-content {
-    margin-bottom: 70px;
 }
 
-.rateplan-box li {
+.rateplan-box li{
     list-style: none;
-    margin-bottom: 10px;
+}
+
+.rateplan-box li::before{
+    content: "✔";
+    position: absolute; /* <li>에 대해 절대 위치 */
+    left: 10%;            /* <li>의 왼쪽 끝에 위치 */
 }
 .rateplan-box span {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
 }
 .rateplan-box strong {
@@ -109,21 +138,29 @@ body {
 .price {
     display: flex;
     gap: 7px;
+    margin-top: 10px;   
 }
 
 .price h2 {
-    font-size: 55px;
+    font-size: 4rem;
     font-weight: 500;
 }
 
 .krw-month {
-    font-size: 14px;
+    font-size: 0.8rem;
     font-weight: 400;
     color: #575757;
     margin-top: 22px;
 }
 
 .dollar {
-    font-size: 30px;
+    font-size: 2.4rem;
     font-weight: 400;
+}
+
+.main-button.current-plan {
+    background: #dfdede;      /* 회색 배경 */
+    color: rgb(85, 85, 85);           /* 글자색 */
+    cursor: not-allowed;      /* 금지(클릭불가) 커서 */
+    opacity: 0.7;             /* 살짝 흐리게 */
 }

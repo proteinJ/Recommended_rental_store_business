@@ -1,4 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 요금제 구입
+    const freeBtn = document.getElementById('free-purchase');
+    const plusBtn = document.getElementById('plus-purchase');
+    const proBtn = document.getElementById('pro-purchase');
+
+    function upgradePlan(planType, successMsg) {
+        fetch('/accounts/upgrade_plan/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ plan_type: planType })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(successMsg);
+                window.location.reload();
+            } else {
+                alert('로그인 후 이용 가능합니다!');
+                window.location.href = "/accounts/login/";
+                console.log(data.error);
+            }
+        });
+    }
+
+    if (freeBtn) {
+        freeBtn.addEventListener('click', function() {
+            upgradePlan('Free', 'Free 플랜으로 변경되었습니다!');
+        });
+    }
+    if (plusBtn) {
+        plusBtn.addEventListener('click', function() {
+            upgradePlan('Plus', 'Plus 플랜으로 변경되었습니다!');
+        });
+    }
+    if (proBtn) {
+        proBtn.addEventListener('click', function() {
+            upgradePlan('Pro', 'Pro 플랜으로 변경되었습니다!');
+        });
+    }
+    
+    
     // 약관 동의 체크박스 로직
     const masterCheckbox = document.getElementById("terms-checkbox");
     const dependentCheckboxes = [
@@ -71,13 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-            
-
-    
-        
-
-
-
 
     const requiredCheckboxes = [
         document.getElementById("privacy-checkbox-1"),
@@ -134,4 +171,19 @@ function openModal(url) {
 function closeModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "none"; // 모달 창 숨김
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

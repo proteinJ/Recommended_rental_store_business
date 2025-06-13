@@ -30,10 +30,14 @@
                             <h2>0</h2>
                             <p class="krw-month">USD/<br>월</p>
                         </div>
-                        {% if user.plan_type == "Free" %}
-                            <button class="main-button">나의 현재 플랜</button>
+                        <div class="rateplan-title">
+                            <p>새로운 상권 분석을 체험해 보세요</p>
+                        </div>
+                        {% if user_profile and user_profile.plan_type == "Free" %}
+                            <button class="main-button current-plan" id="current_my_plan">나의 현재 플랜</button>
+                        {% else %}
+                            <button class="main-button" id="free-purchase">Free 이용하기</button>
                         {% endif %}
-                        <button class="main-button">Free 이용하기</button>
                         <ul>
                             <li><span> 검색 횟수 제한: </span>하루 최대 5회 업종 추천 검색</li>
                             <li><span> 추천 업종 제한: </span>일부 업종군(예: 인기 업종, 프랜차이즈 등)만 추천</li>
@@ -54,10 +58,14 @@
                             <h2>3</h2>
                             <p class="krw-month">USD/<br>월</p>
                         </div>
-                        {% if user.plan_type == "Plus" %}
-                            <button class="main-button">나의 현재 플랜</button>
+                        <div class="rateplan-title">
+                            <p>상세한 자료 분석을 통해 창업 계획을 세워보세요</p>
+                        </div>
+                        {% if user_profile and user_profile.plan_type == "Plus" %}
+                            <button class="main-button current-plan" id="current_my_plan">나의 현재 플랜</button>
+                        {% else %}
+                            <button class="main-button" id="plus-purchase">Plus 이용하기</button>
                         {% endif %}
-                        <button class="main-button">Plus 이용하기</button>
                         <ul>
                             <li><span> 검색 횟수: </span>하루 최대 20회 업종 추천 검색</li>
                             <li><span> 추천 업종: </span>모든 업종군 추천 가능</li>
@@ -79,10 +87,14 @@
                             <h2>5</h2>
                             <p class="krw-month">USD/<br>월</p>
                         </div>
-                        {% if user.plan_type == "Pro" %}
-                            <button class="main-button">나의 현재 플랜</button>
+                        <div class="rateplan-title">
+                            <p>전문가 수준의 컨설팅을 받아보세요</p>
+                        </div>
+                        {% if user_profile and user_profile.plan_type == "Pro" %}
+                            <button class="main-button current-plan" id="current_my_plan">나의 현재 플랜</button>
+                        {% else %}
+                            <button class="main-button" id="pro-purchase">Pro 이용하기</button>
                         {% endif %}
-                        <button class="main-button">Plus 이용하기</button>
                         <ul>
                             <li><span> 검색 횟수: </span>무제한 업종 추천 검색</li>
                             <li><span> 추천 업종: </span>모든 업종군 + 프리미엄 업종(트렌드, 신사업 등) 추천</li>

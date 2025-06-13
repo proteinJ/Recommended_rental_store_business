@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 from .models import UserProfile
 
 # 로그인 처리 로직
@@ -90,3 +93,33 @@ def terms_advertising(request):
 
 def terms_age(request):
     return render(request, 'accounts/terms_age.html')
+
+    from accounts.models import UserProfile
+
+def price_info(request):
+    user_profile = None
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            user_profile = None
+    return render(request, 'priceInfo.html', {
+        'user_profile': user_profile,
+    })
+
+def upgrade_plan(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'success': False, 'error': '로그인 필요'}, status=403)
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        plan_type = data.get('plan_type')
+        if plan_type not in ['Free', 'Plus', 'Pro']:
+            return JsonResponse({'success': False, 'error': '잘못된 플랜'}, status=400)
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            profile.plan_type = plan_type
+            profile.save()
+            return JsonResponse({'success': True})
+        except UserProfile.DoesNotExist:
+            return JsonResponse({'success': False, 'error': '프로필 없음'}, status=404)
+    return JsonResponse({'success': False, 'error': '잘못된 요청'}, status=400)

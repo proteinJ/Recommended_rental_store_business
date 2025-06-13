@@ -3,11 +3,14 @@
         <nav class="nav-links">
             <a href="/introduction">소개</a>
             <a href="/review/">서비스 후기</a>
-            <a href="/priceInfo">요금제</a>
+            <a href="/accounts/priceInfo">요금제</a>
         </nav>
         {% if user.is_authenticated %}
             <div class="name-login-signup-btn-container">
-                <a href="#" class="mypage-name"> <img src="{% static 'images/userProfile.png' %}" class="userProfile-icon" alt="사용자정보"> <span class="highlight-text">{{ user.first_name }}</span> 님</a>
+                <a href="{% if user.is_authenticated and user.is_superuser %}/admin/{% else %}#{% endif %}" class="mypage-name">
+                    <img src="{% static 'images/userProfile.png' %}" class="userProfile-icon" alt="사용자정보">
+                    <span class="highlight-text">{{ user.first_name }}</span> 님
+                </a>
                 <a href="{% url 'accounts:logout' %}" class="login-signup-button">로그아웃</a>
             </div>
         {% else %}
