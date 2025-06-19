@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 KAKAO_MAP_API_KEY = os.getenv('KAKAO_MAP_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
