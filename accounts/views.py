@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 import json
 from .models import UserProfile
 
@@ -12,10 +12,8 @@ def login_view(request):
         userid = request.POST.get('userid')
         password = request.POST.get('password')
 
-        
-
         user = authenticate(request, username=userid, password=password)
-        if user is not None: # 로그인 성공
+        if user is not None:  # 로그인 성공
             login(request, user)
             print(f"\n✅ [로그인 성공] -----------------------------")
             print(f"  ▶ 아이디: {user.username}")
@@ -23,18 +21,17 @@ def login_view(request):
             print(f"  ▶ 이름: {user.first_name}")
             print(f"---------------------------------------------\n")
             return redirect('home:index')
-        else: # 로그인 실패
+        else:  # 로그인 실패
             print("\n❌ [로그인 실패] 아이디 또는 비밀번호가 올바르지 않습니다.\n")
-            error_msg = '아이디 또는 비밀번호가 올바르지 않습니다.'
-            return render(request, 'accounts/login.html', {'error': error_msg })
-    else: # GET 요청 - 로그인 폼 보여주기(처음 화면 렌더링)
-        return render(request, 'accounts/login.html')
+            messages.error(request, '아이디 또는 비밀번호가 올바르지 않습니다.')
+            return render(request, 'registration/login.html')
+    else:  # GET 요청 - 로그인 폼 보여주기(처음 화면 렌더링)
+        return render(request, 'registration/login.html')
 
 def signup_view(request):
     error_field = None
 
     if request.method == 'POST':
-        
         username = request.POST.get('username')
         userid = request.POST.get('userid')
         password = request.POST.get('password')
@@ -47,9 +44,11 @@ def signup_view(request):
         if password != confirm_password:
             error_field = 'confirm-password'
             print("\n❌ [회원가입 실패] 비밀번호가 일치하지 않습니다.\n")
+            messages.error(request, '비밀번호가 일치하지 않습니다.')
         elif User.objects.filter(username=userid).exists():
             error_field = 'userid'
-            print("\n❌ [회원가입 실패] userid가 존재하지 않습니다.\n")
+            print("\n❌ [회원가입 실패] userid가 이미 존재합니다.\n")
+            messages.error(request, '이미 존재하는 아이디입니다.')
         else:
             # 회원 생성
             user = User.objects.create_user(
@@ -65,17 +64,18 @@ def signup_view(request):
                 phone=userphone
             )
             print(f"\n✅ [회원가입 성공] -----------------------------")
-            print(f"  ▶ 아이디: {user.username}")
-            print(f"  ▶ DB User ID: {user.id}")
+            print(f"  아이디: {user.username}")
+            print(f"  DB User ID: {user.id}")
             print(f"  ▶ 이름: {user.first_name}")
             print(f"  ▶ 생년월일: {userbirth_year}-{userbirth_month}-{userbirth_day}")
             print(f"  ▶ 전화번호: {userphone}")
             print(f"-----------------------------------------------\n")
+            messages.success(request, '회원가입이 완료되었습니다. 로그인 해주세요!')
             return redirect('accounts:login')
         
     # 회원가입 처리 로직
     return render(request, 'accounts/signup.html', {
-        'error_field' : error_field,
+        'error_field': error_field,
     })
 
 def logout_view(request):
@@ -93,8 +93,6 @@ def terms_advertising(request):
 
 def terms_age(request):
     return render(request, 'accounts/terms_age.html')
-
-    from accounts.models import UserProfile
 
 def price_info(request):
     user_profile = None

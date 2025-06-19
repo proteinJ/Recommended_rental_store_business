@@ -139,8 +139,9 @@ body {
 }
 
 .result-title-text {
+    font-size: 20px;
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .predict-container {
@@ -389,4 +390,8 @@ body {
     .price-year-item .price {
         font-size: 0.7rem;
     }
+}
+
+.popup-location {
+    font-size: 15px;
 }

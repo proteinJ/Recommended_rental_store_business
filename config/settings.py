@@ -21,7 +21,7 @@ load_dotenv()
 
 KAKAO_MAP_API_KEY = os.getenv('KAKAO_MAP_API_KEY')
 
-
+LOGIN_URL = '/accounts/login/'
 
 
 # Quick-start development settings - unsuitable for production
