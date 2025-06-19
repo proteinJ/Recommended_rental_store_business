@@ -45,10 +45,12 @@ def signup_view(request):
             error_field = 'confirm-password'
             print("\n❌ [회원가입 실패] 비밀번호가 일치하지 않습니다.\n")
             messages.error(request, '비밀번호가 일치하지 않습니다.')
+            return render(request, 'accounts/signup.html', {'error_field': error_field})
         elif User.objects.filter(username=userid).exists():
             error_field = 'userid'
             print("\n❌ [회원가입 실패] userid가 이미 존재합니다.\n")
             messages.error(request, '이미 존재하는 아이디입니다.')
+            return render(request, 'accounts/signup.html', {'error_field': error_field})
         else:
             # 회원 생성
             user = User.objects.create_user(
@@ -73,7 +75,6 @@ def signup_view(request):
             messages.success(request, '회원가입이 완료되었습니다. 로그인 해주세요!')
             return redirect('accounts:login')
         
-    # 회원가입 처리 로직
     return render(request, 'accounts/signup.html', {
         'error_field': error_field,
     })

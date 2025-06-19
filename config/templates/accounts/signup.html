@@ -109,6 +109,14 @@
             {% include 'common/footer.html' %}
         </footer>
     </div>
+
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+        alert("{{ message|escapejs }}");
+        {% endfor %}
+    </script>
+    {% endif %}
     <script src="{%static 'js/button_logic.js' %}"></script>
 </body>
 </html>
