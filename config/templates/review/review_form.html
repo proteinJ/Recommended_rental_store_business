@@ -1,6 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/review_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+
+
+<header class="navbar">
+    {% include 'common/navbar.html' %}
+</header>
+
 <h2>후기 작성</h2>
 <form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">등록</button>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">등록</button>
 </form>
+
+<footer class="footer">
+    {% include 'common/footer.html' %}
+</footer>

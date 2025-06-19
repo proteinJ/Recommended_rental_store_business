@@ -1,23 +1,203 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/review_list.css' %}">
+  <title>어데집</title>
 </head>
+
 <body>
-    <h2>서비스 후기 목록</h2>
-<a href="{% url 'review:review_create' %}">후기 작성하기</a>
-<ul>
-  {% for review in reviews %}
-    <li>
-      <strong>{{ review.username }}</strong> ({{ review.rating }}점)<br>
-      {{ review.content }}<br>
-      <small>{{ review.created_at }}</small>
-    </li>
-  {% empty %}
-    <li>아직 후기가 없습니다.</li>
-  {% endfor %}
-</ul>
+  <header class="navbar">
+    {% include 'common/navbar.html' %}
+  </header>
+
+  <div class="review-list-header">
+    <div class="header-content">
+      <h2>서비스 후기 목록</h2>
+      <a href="{% url 'review:review_create' %}" class="write-review-btn">
+        <span class="btn-icon"></span>
+        <span>후기 작성하기</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="review-list">
+    <!-- 리뷰 카드 1 -->
+    <article class="review-card">
+      <div class="review-header-info">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">김</div>
+          <div class="reviewer-details">
+            <h3>김**</h3>
+            <div class="review-date">2025년 6월 21일</div>
+          </div>
+        </div>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-value">5.0</span>
+        </div>
+      </div>
+      <div class="review-content">
+        부산에서 새 아파트를 찾고 있었는데, 어대집 덕분에 정말 쉽게 찾을 수 있었습니다.
+        지도에서 원하는 지역의 아파트를 한눈에 볼 수 있어서 편리했고, 각 아파트의 상세 정보와
+        실거래가까지 확인할 수 있어서 합리적인 선택을 할 수 있었어요. 특히 주변 편의시설 정보까지
+        제공해줘서 생활 편의성도 미리 파악할 수 있었습니다.
+      </div>
+      <div class="review-tags">
+        <span class="tag">직관적인 UI</span>
+        <span class="tag">정확한 정보</span>
+        <span class="tag">빠른 검색</span>
+      </div>
+      <div class="review-actions">
+        <button class="action-button liked">
+          <span>👍</span>
+          <span>도움됨 (142)</span>
+        </button>
+        <button class="action-button">
+          <span>💬</span>
+          <span>댓글 (8)</span>
+        </button>
+      </div>
+    </article>
+
+    <!-- 리뷰 카드 2 -->
+    <article class="review-card">
+      <div class="review-header-info">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">이</div>
+          <div class="reviewer-details">
+            <h3>이**</h3>
+            <div class="review-date">2025년 6월 21일</div>
+          </div>
+        </div>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-value">5.0</span>
+        </div>
+      </div>
+      <div class="review-content">
+        타지역에서 부산으로 이사를 준비하면서 어대집을 이용했습니다. 지역을 잘 모르는 상황에서도
+        지도 기반으로 아파트 위치와 주변 환경을 한눈에 파악할 수 있어서 정말 유용했어요.
+        실거래가 정보도 투명하게 공개되어 있어서 부동산 거래 시 큰 도움이 되었습니다.
+        덕분에 만족스러운 집을 구할 수 있었네요!
+      </div>
+      <div class="review-tags">
+        <span class="tag">타지역 이사</span>
+        <span class="tag">투명한 가격</span>
+        <span class="tag">상세한 정보</span>
+      </div>
+      <div class="review-actions">
+        <button class="action-button">
+          <span>👍</span>
+          <span>도움됨 (98)</span>
+        </button>
+        <button class="action-button">
+          <span>💬</span>
+          <span>댓글 (5)</span>
+        </button>
+      </div>
+    </article>
+
+    <!-- 리뷰 카드 3 -->
+    <article class="review-card">
+      <div class="review-header-info">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">박</div>
+          <div class="reviewer-details">
+            <h3>박**</h3>
+            <div class="review-date">2025년 6월 21일</div>
+          </div>
+        </div>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star empty">★</span>
+          <span class="rating-value">4.0</span>
+        </div>
+      </div>
+      <div class="review-content">
+        전반적으로 만족스러운 서비스입니다. 아파트 검색이 빠르고 편리하며, 필요한 정보를 쉽게
+        찾을 수 있었어요. 다만 일부 아파트의 정보가 최신화되지 않은 경우가 있어서 아쉬웠습니다.
+        그래도 부산 지역 아파트를 찾는다면 꼭 이용해보시길 추천드립니다.
+      </div>
+      <div class="review-tags">
+        <span class="tag">편리한 검색</span>
+        <span class="tag">개선 필요</span>
+      </div>
+      <div class="review-actions">
+        <button class="action-button">
+          <span>👍</span>
+          <span>도움됨 (45)</span>
+        </button>
+        <button class="action-button">
+          <span>💬</span>
+          <span>댓글 (3)</span>
+        </button>
+      </div>
+    </article>
+
+    <!-- 리뷰 카드 4 -->
+    <article class="review-card">
+      <div class="review-header-info">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">최</div>
+          <div class="reviewer-details">
+            <h3>최*</h3>
+            <div class="review-date">2025년 6월 20일</div>
+          </div>
+        </div>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-value">5.0</span>
+        </div>
+      </div>
+      <div class="review-content">
+        신혼집을 구하면서 어대집을 이용했는데 정말 만족스러웠어요! 지도에서 원하는 조건의
+        아파트를 필터링해서 볼 수 있고, 각 아파트의 장단점을 비교하기도 쉬웠습니다.
+        특히 주변 학교나 병원, 마트 같은 생활 인프라 정보도 함께 제공되어서 신혼부부에게는
+        정말 유용한 서비스였어요. 강력 추천합니다!
+      </div>
+      <div class="review-tags">
+        <span class="tag">신혼부부</span>
+        <span class="tag">인프라 정보</span>
+        <span class="tag">비교 쉬움</span>
+      </div>
+      <div class="review-actions">
+        <button class="action-button">
+          <span>👍</span>
+          <span>도움됨 (87)</span>
+        </button>
+        <button class="action-button">
+          <span>💬</span>
+          <span>댓글 (12)</span>
+        </button>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    {% include 'common/footer.html' %}
+  </footer>
+
+
 </body>
+
 </html>

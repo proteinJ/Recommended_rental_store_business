@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workflow</title>
+    <title>어데집</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
 </head>
@@ -47,13 +47,15 @@
                         </div>
                         <div class="login-box">
                             <label class="input_text">생년월일 <span class="highlight-star">*</span></label>
-                            <input class="input-box" type="text" name="userbirth-year" id="userbirth-year" placeholder="생일연도(4자)">
-                            <input class="input-box" type="text" name="userbirth-month" id="userbirth-month" placeholder="월">
-                            <input class="input-box" type="text" name="userbirth-day" id="userbirth-day" placeholder="일">
+                            <div class="userbirth-container">
+                                <input class="input-box birth-box-year" type="text" name="userbirth-year" placeholder="생일연도(4자)" maxlength="4">
+                                <input class="input-box birth-box-month" type="text" name="userbirth-month" placeholder="월" maxlength="2">
+                                <input class="input-box birth-box-day" type="text" name="userbirth-day" placeholder="일" maxlength="2">
+                            </div>
                         </div>
                         <div class="login-box">
                             <label class="input_text">휴대전화 번호 <span class="highlight-star">*</span></label>
-                            <input class="input-box" type="text" name="phone" id="phone" placeholder="휴대전화 번호">
+                            <input class="input-box" type="text" name="phone" id="phone" placeholder="휴대전화 번호" maxlength="11">
                         </div>
                         
                         <div class="terms-of-use">

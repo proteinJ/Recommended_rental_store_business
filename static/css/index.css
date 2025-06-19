@@ -32,7 +32,7 @@ body {
     left: 430px;
     width: 70vw;
     height: auto;
-    z-index: 0;
+    z-index: 3;
 }
 
 .background-image2 {
@@ -40,7 +40,7 @@ body {
     left: -50px;
     width: 40vw;
     height: auto;
-    z-index: 2;
+    z-index: 0;
 }
 
 .section1 {
@@ -105,4 +105,13 @@ body {
     transform: translateY(-15px);    
     box-shadow: 10px 10px 3px 0 rgba(0, 0, 0, 0.35),
     0 4px 16px 0 rgba(0,0,0,0.12);
+}
+
+.menu-item-content img {
+    display: block;
+    margin: 30px auto 20px auto;
+    width: 90%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 10px;
 }

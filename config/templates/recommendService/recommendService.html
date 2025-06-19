@@ -2,15 +2,18 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workflow</title>
+    <title>어데집</title>
     <link rel="stylesheet" href="{% static 'css/recommendService.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_map_api_key }}&libraries=services"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_map_api_key }}&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
+
 <body>
     <!-- Navbar -->
     <header class="navbar">
@@ -20,13 +23,57 @@
     <!-- Main Section -->
     <main class="main-content">
         <div class="section1">
-            <div>
-                <input type="text" id="addressInput" placeholder="도로명 주소를 입력하세요 (예: 부산 해운대구 센텀중앙로 90)">
-                <button id="searchButton">주소 검색</button>
+            <div class="map-overlay-container">
+                <div id="searchContainer" class="search-contianer">
+                    <div>
+                        <p class="search-title">구(군) 검색</p>
+                        <input type="text" id="addressInput" placeholder="예) 사하구">
+                        <button id="searchButton">주소 검색</button>
+                    </div>
+                    <div id="messagePopup" class="message-popup" style="display: none;"></div>
+                </div>
+
+                <button id="openPopupButton" class="popup-control-button">&lt;&lt;</button>
+                <button id="closePopupButton" class="popup-control-button">&gt;&gt;</button>
+
+                <!-- 팝업 영역 -->
+                <div id="popup" class="predict-result-container">
+                    <div class="result-title-container">
+                        <p class="result-title-text">분석리포트</p>
+                    </div>
+                    <div class="predict-container">
+                        <div class="current-location-title-container">
+                            <span>구</span>
+                            <p class="popup-location"></p>
+                            <span>군</span>
+                            <p class="popup-complex-name"></p>
+                            <span>시</span>
+                            <p class="popup-date"></p>
+                        </div>
+                        <div class="predict-main-info-container">
+                            <p class="container-title">매매가 예측 분석</p>
+                            <!-- 연도별 거래가 표가 JS로 여기에 들어옵니다 -->
+                            <div class="predict-year-price-table"></div>
+                        </div>
+
+                        <div class="predict-graph-container">
+                            <p class="container-title">분석 그래프</p>
+                            <img id="predict-graph-img" src="" class="predict-graph" alt="분석 그래프">
+                        </div>
+                        <div class="predict-graph-info-content">
+                            <li>현재 시세는 <h4>69억 2천만원</h4>입니다.</li>
+                            <li>향후 1년 내 최저가는 <h3>N</h3>월 <h4>68억 2천만원</h4>으로 예상됩니다.</li>
+                            <li>향후 1년 내 최고가는 <h3>N</h3>월 <h4>68억 2천만원</h4>으로 예상됩니다.</li>
+                            <li>1년 후 예상 시세는 <h4>74억 2천만원</h4>입니다.</li>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-            <div id="resultInfo"></div>
             <div id="map"></div>
-            
+        </div>
+
         </div>
     </main>
 
@@ -34,9 +81,9 @@
     <footer class="footer">
         {% include 'common/footer.html' %}
     </footer>
-    
-    <script src="{%static 'js/map_control.js' %}"></script>
-    <script src="{%static 'js/button_logic.js' %}"></script>
-    
+
+    <script src="{% static 'js/map_control.js' %}"></script>
+    <script src="{% static 'js/button_logic.js' %}"></script>
 </body>
+
 </html>

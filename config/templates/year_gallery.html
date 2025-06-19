@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>어데집</title>
+    <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+    <style>
+        .year-select-container {
+            text-align: center;
+            margin: 30px 0 10px 0;
+        }
+        .year-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        .year-image {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        {% include 'common/navbar.html' %}
+    </header>
+    <main>
+        <div class="year-select-container">
+            <select id="yearSelect">
+                {% for y in years %}
+                <option value="{{ y }}">{{ y }}년</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="year-image-container">
+            <img id="yearImage" class="year-image" src="{% static 'images/years/year2020.jpg' %}" alt="연도별 이미지">
+        </div>
+    </main>
+    <footer class="footer">
+        {% include 'common/footer.html' %}
+    </footer>
+    <script>
+        const yearSelect = document.getElementById('yearSelect');
+        const yearImage = document.getElementById('yearImage');
+        yearSelect.addEventListener('change', function() {
+            const year = yearSelect.value;
+            yearImage.src = "/static/images/years/year" + year + ".jpg";
+            yearImage.alt = year + "년 이미지";
+        });
+    </script>
+</body>
+</html>

@@ -268,3 +268,16 @@ body {
     font-weight: 600;
     width: 90%;
 }
+
+.birth-box-year {
+    width: 40%;
+}
+
+.birth-box-month, .birth-box-day {
+    width: 30%;
+}
+
+.userbirth-container {
+    display: flex;
+    gap: 5px;
+}
