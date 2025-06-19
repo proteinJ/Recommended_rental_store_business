@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    z-index: 10; 
+}
+
+body {
+    background-color: white;
+}
+
+
+/* Main */
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px + 300px); /* 80px는 footer, 400px는 menu의 margin-top */
+}
+
+.background-image1,
+.background-image2 {
+    position: absolute;      /* 또는 absolute, fixed는 스크롤해도 고정 */
+    z-index: 0;          /* 맨 뒤로 보냄 */
+    pointer-events: none; /* 클릭 등 이벤트 무시 */
+    user-select: none;    /* 드래그 방지 */
+}
+
+/* 원하는 위치와 크기 지정 */
+.background-image1 {
+    top: 120px;
+    left: 430px;
+    width: 70vw;
+    height: auto;
+    z-index: 3;
+}
+
+.background-image2 {
+    top: 450px;
+    left: -50px;
+    width: 40vw;
+    height: auto;
+    z-index: 0;
+}
+
+.section1 {
+    background-color: white;
+    /* height: 100vh; */
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem 4rem 4rem;
+}
+
+.left-text {
+    margin-top: 100px;
+}
+
+.left-text h1 {
+    font-size: 5rem;
+    line-height: 1.2;
+    color: rgb(0, 0, 0);
+}
+.left-text h2 {
+    font-size: 2rem;
+}
+
+.menu {
+    margin-top: 400px;
+    z-index: 20;
+}
+
+.menu ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item, .menu-item * {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.menu-item-content {
+    margin-bottom: 25px;
+}
+
+.menu-item {
+    background: rgba(247, 247, 247, 0.95);
+    width: 260px;
+    height: 380px;
+    padding: 0 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 195, 30, 0.979);
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-15px);    
+    box-shadow: 10px 10px 3px 0 rgba(0, 0, 0, 0.35),
+    0 4px 16px 0 rgba(0,0,0,0.12);
+}
+
+.menu-item-content img {
+    display: block;
+    margin: 30px auto 20px auto;
+    width: 90%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 10px;
+}
