@@ -33,7 +33,11 @@ SECRET_KEY = "django-insecure-n4k(l0ry7y=g141zht(8%bq*^+*r67@4%m$x52qrg^nr(ya-w6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "apartment-sales-forecasting-service.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
